@@ -47,3 +47,5 @@ class dayOne {
 }
 
 registerPaint(PAINTLET_NAMESPACE, dayOne);
+
+export {};

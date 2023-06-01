@@ -1,4 +1,10 @@
-export function drawShape(x, y, r, sides) {
+export function drawShape(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  r: number,
+  sides: number
+) {
   // move the canvas to the center position
   ctx.translate(x, y);
 

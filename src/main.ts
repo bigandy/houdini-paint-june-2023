@@ -1,17 +1,22 @@
-import "./style.scss";
+import "./css/global.scss";
 
 import "./js/utils/page-navigation.ts";
 
 // Worklet Code
 import day1 from "./js/day-1.js?worker&url";
+import day2 from "./js/day-2.js?worker&url";
 
 if ("paintWorklet" in CSS) {
   CSS.paintWorklet.addModule(day1);
+  CSS.paintWorklet.addModule(day2);
 }
 
 const pages = [
   {
     title: "Day One - Simple Squares",
+  },
+  {
+    title: "Day Two - Simple Shapes",
   },
 ];
 

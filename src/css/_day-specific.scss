@@ -1,0 +1,7 @@
+.day-1 {
+  --day-1-size: 10;
+}
+
+.day:has(.day-2):has(button:hover) {
+  --day-2-size: 10;
+}
