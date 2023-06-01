@@ -34,9 +34,6 @@ class dayOne {
             0,
             2 * Math.PI
           );
-          // ctx.fillStyle = "orange";
-          // ctx.stroke();
-          // ctx.fill();
         }
 
         ctx.stroke();
