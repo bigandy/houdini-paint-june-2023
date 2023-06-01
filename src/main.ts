@@ -3,7 +3,7 @@ import "./style.scss";
 import "./js/utils/page-navigation.ts";
 
 // Worklet Code
-import day1 from "./js/day-1.js?url";
+import day1 from "./js/day-1.js?worker&url";
 
 if ("paintWorklet" in CSS) {
   CSS.paintWorklet.addModule(day1);
