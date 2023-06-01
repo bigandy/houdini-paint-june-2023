@@ -1,24 +1,42 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import "./style.scss";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+import "./js/utils/page-navigation.ts";
+
+// Worklet Code
+import day1 from "./js/day-1.js?url";
+
+if ("paintWorklet" in CSS) {
+  CSS.paintWorklet.addModule(day1);
+}
+
+const pages = [
+  {
+    title: "Day One - Simple Squares",
+  },
+];
+
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+    <div class="days">
+      ${pages
+        .map((page, index) => {
+          const isLastPage = index === pages.length - 1;
+          return `
+  <div class="day" id="${index + 1}">
+    <h2>${page.title}</h2>
+    <div class="day-${index + 1}" data-day="${index + 1}">
+          <div class="border"><h3>${page.title}</h3></div>
+          <div class="background"><h3>${page.title}</h3></div>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
+    <nav>
+          ${index !== 0 ? `<button class="btn-prev">Prev</button>` : ""}
+          ${!isLastPage ? `<button class="btn-next">Next</button>` : ""}
+    </nav>
+    
   </div>
-`
-
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+        `;
+        })
+        .join("")}
+    </div>
+  </div>
+`;
