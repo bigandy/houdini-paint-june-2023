@@ -5,10 +5,12 @@ import "./js/utils/page-navigation.ts";
 // Worklet Code
 import day1 from "./js/day-1.js?worker&url";
 import day2 from "./js/day-2.js?worker&url";
+import day3 from "./js/day-3.js?worker&url";
 
 if ("paintWorklet" in CSS) {
   CSS.paintWorklet.addModule(day1);
   CSS.paintWorklet.addModule(day2);
+  CSS.paintWorklet.addModule(day3);
 }
 
 const pages = [
@@ -17,6 +19,12 @@ const pages = [
   },
   {
     title: "Day Two - Simple Shapes",
+  },
+  {
+    title: "Day Three - Corners",
+  },
+  {
+    title: "Day Four - Blobs",
   },
 ];
 
@@ -34,8 +42,12 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
           <div class="background"><h3>${page.title}</h3></div>
     </div>
     <nav>
-          ${index !== 0 ? `<button class="btn-prev">Prev</button>` : ""}
-          ${!isLastPage ? `<button class="btn-next">Next</button>` : ""}
+          <button ${
+            index === 0 ? "disabled" : ""
+          } class="btn-prev">&uarr; Prev</button>
+          <button ${
+            isLastPage ? "disabled" : ""
+          } class="btn-next">Next &darr;</button>
     </nav>
     
   </div>

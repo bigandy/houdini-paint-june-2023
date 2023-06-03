@@ -1,6 +1,4 @@
-$days: 1, 2;
-
-@each $day in $days {
+@for $day from 1 to 30 {
   .day-#{$day} {
     --paint: paint(day-#{$day});
   }
@@ -17,19 +15,17 @@ $days: 1, 2;
   display: grid;
   margin-bottom: 1rem;
 
-  width: 100%; // need this for Firefox to use polyfill
   gap: 1rem;
 
   @media (width > 600px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  > div:not(.border) {
+  div:not(.border) {
     border: 1px solid;
   }
 
   > div {
-    width: 100%; // need this for Firefox to use polyfill
     display: grid;
     place-content: center;
   }

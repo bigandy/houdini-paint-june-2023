@@ -2,10 +2,27 @@
   --day-1-size: 10;
 }
 
-.day:has(.day-1):has(button:hover) .day-1 {
-  --day-1-size: 20;
-}
+// possibly bad for perf?
+// .day:has(.day-1):has(button:hover) .day-1 {
+//   --day-1-size: 20;
+// }
 
-.day:has(.day-2):has(button:hover) {
-  --day-2-size: 10;
+// .day:has(.day-2):has(button:hover) {
+//   --day-2-size: 10;
+// }
+
+.day-3 {
+  .background {
+    --day-3-width-multiplier: 7;
+    --day-3-height-multiplier: 3;
+  }
+
+  .border {
+    transition: border 300ms ease;
+
+    &:hover {
+      border-image-repeat: space;
+      border-image-slice: 8% 9%;
+    }
+  }
 }
